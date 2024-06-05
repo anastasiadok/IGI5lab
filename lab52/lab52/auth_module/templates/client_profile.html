@@ -1,0 +1,15 @@
+{% block content %}
+<h1>Client Profile</h1>
+<form action="{% url 'home' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Home</button>
+    {% if user.is_authenticated %}
+    <p>Name: {{ user.client.first_name }}</p>
+    <p>Surname: {{ user.employee.last_name }}</p>
+    <p>Phone: {{ user.client.phone }}</p>
+    <p>Date of Birth: {{ user.client.date_of_birth }}</p>
+    <a href="{% url 'auth_module:edit_profile' %}">Edit</a>
+    {% else %}
+    <p>You are not logged in.</p>
+    {% endif %}
+    {% endblock %}

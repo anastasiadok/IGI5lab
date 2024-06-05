@@ -1,0 +1,165 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>lab52</Name>
+    <RootNamespace>lab52</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9a210f8b-660a-4e70-a520-ab79ba413945</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>lab52.settings</DjangoSettingsModule>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="auth_module\admin.py" />
+    <Compile Include="auth_module\apps.py" />
+    <Compile Include="auth_module\migrations\__init__.py" />
+    <Compile Include="auth_module\models.py" />
+    <Compile Include="auth_module\tests.py" />
+    <Compile Include="auth_module\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="auth_module\views.py" />
+    <Compile Include="auth_module\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="lab52\__init__.py" />
+    <Compile Include="lab52\settings.py" />
+    <Compile Include="lab52\urls.py" />
+    <Compile Include="lab52\wsgi.py" />
+    <Compile Include="middleware\admin.py" />
+    <Compile Include="middleware\apps.py" />
+    <Compile Include="middleware\custom.py" />
+    <Compile Include="middleware\migrations\__init__.py" />
+    <Compile Include="middleware\models.py" />
+    <Compile Include="middleware\tests.py" />
+    <Compile Include="middleware\views.py" />
+    <Compile Include="middleware\__init__.py" />
+    <Compile Include="shop\admin.py" />
+    <Compile Include="shop\apps.py" />
+    <Compile Include="auth_module\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="shop\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="shop\migrations\__init__.py" />
+    <Compile Include="shop\models.py" />
+    <Compile Include="shop\tests.py" />
+    <Compile Include="shop\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="shop\views.py" />
+    <Compile Include="shop\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="auth_module\templates\client_edit.html" />
+    <Content Include="auth_module\templates\client_profile.html" />
+    <Content Include="auth_module\templates\employee_edit.html" />
+    <Content Include="auth_module\templates\employee_profile.html" />
+    <Content Include="middleware\templates\middleware\index.html" />
+    <Content Include="requirements.txt" />
+    <Content Include="shop\templates\about.html" />
+    <Content Include="shop\templates\add_review.html" />
+    <Content Include="shop\templates\articles.html" />
+    <Content Include="shop\templates\base.html" />
+    <Content Include="auth_module\templates\login.html" />
+    <Content Include="auth_module\templates\registration.html" />
+    <Content Include="shop\templates\clients.html" />
+    <Content Include="shop\templates\employees.html" />
+    <Content Include="shop\templates\faq.html" />
+    <Content Include="shop\templates\home.html" />
+    <Content Include="shop\templates\orders.html" />
+    <Content Include="shop\templates\order_create.html" />
+    <Content Include="shop\templates\promocodes.html" />
+    <Content Include="shop\templates\purchases.html" />
+    <Content Include="shop\templates\purchase_create.html" />
+    <Content Include="shop\templates\reviews.html" />
+    <Content Include="shop\templates\shop\index.html" />
+    <Content Include="shop\templates\statistics.html" />
+    <Content Include="shop\templates\vacancies.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="auth_module\" />
+    <Folder Include="auth_module\migrations\" />
+    <Folder Include="auth_module\templates\" />
+    <Folder Include="lab52\" />
+    <Folder Include="middleware\" />
+    <Folder Include="middleware\migrations\" />
+    <Folder Include="middleware\templates\" />
+    <Folder Include="middleware\templates\middleware\" />
+    <Folder Include="shop\" />
+    <Folder Include="shop\migrations\" />
+    <Folder Include="shop\templates\" />
+    <Folder Include="shop\templates\shop\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>0.0</Version>
+      <Description>env (Python 3.12 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

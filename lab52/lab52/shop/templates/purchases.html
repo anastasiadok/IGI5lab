@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Purchases</h2>
+<form action="{% url 'home' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Home</button>
+</form>
+<ul>
+    {% for purchase in purchases %}
+    <li>
+        <h3>{{ purchase }}</h3>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

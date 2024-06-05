@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Site</title>
+</head>
+<body>
+
+    <main>
+        {% if user.is_authenticated %}
+        Hello, {{ user.username }}
+        <a href="{% url 'auth_module:logout' %}">Log out</a>
+        {% else %}
+        <a href="{% url 'auth_module:registration' %}">Registration</a>
+        <a href="{% url 'auth_module:login' %}">Log in</a>
+        {% endif %}
+        {% block content %}
+        {% endblock content %}
+
+    </main>
+
+    <footer>
+        <p>© 2024 Site</p>
+    </footer>
+</body>
+</html>
+<script>
+    let tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!tz) {
+        tz = "UTC"
+    }
+    document.cookie = "mytz=" + tz + ";path=/";
+</script>

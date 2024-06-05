@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ catfact }}</h2>
+<div>
+    {%load tz%}
+    {% get_current_timezone as current_timezone %}
+    <p>Current date: {{ current_date_formatted }}</p>
+    <p>User time zone: {{ current_timezone }}</p>
+    <p><pre>{{calendar_text}}</pre></p>
+</div>
+    {% if not is_superuser %}
+<form action="{% url 'auth_module:profile' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Profile</button>
+</form>
+    {% endif %}
+    {% if is_superuser %}
+<form action="{% url 'statistic' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Statistic</button>
+</form>
+    {% endif %}
+    {% if is_employee or is_superuser %}
+<a href="{% url 'clients' %}"><li>Clients</li></a>
+<a href="{% url 'orders' %}"><li>Orders</li></a>
+<a href="{% url 'purchases' %}"><li>Purchases</li></a>
+    {% endif %}
+
+<form action="" method="get">
+    <label for="price_min">Price from:</label>
+    <input type="number" id="price_min" name="price_min" value="{{ request.GET.price_min }}">
+    <label for="price_max">to:</label>
+    <input type="number" id="price_max" name="price_max" value="{{ request.GET.price_max }}">
+    <label for="producttype">product type:</label>
+    <select id="producttype" name="producttype">
+        <option value="">All</option>
+        {% for producttype in producttypes %}
+        <option value="{{ producttype }}" {% if request.GET.producttype == producttype.ptype %}selected{% endif %}>{{ producttype }}</option>
+        {% endfor %}
+    </select>
+    <label for="search">Search (by name):</label>
+    <input type="text" id="search" name="search" value="{{ request.GET.search }}">
+    <input type="submit" value="Filter">
+</form>
+
+    {% for product in products %}
+<div>
+    <h2>{{ product }}</h2>
+    {% if not is_employee and not is_superuser %}
+    <form action="{% url 'create_order' product.id %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Order">
+    </form>
+    {% endif %}
+    {% if is_employee or is_superuser %}
+    <form action="{% url 'create_purchase' product.id %}" method="get">
+        {% csrf_token %}
+        <input type="submit" value="Purchase">
+    </form>
+    {% endif %}
+</div>
+    {% endfor %}
+<article>
+    <h3>Last article</h3>
+    <h2>{{ latest_article.title }}</h2>
+    <p>{{ latest_article.summary }}</p>
+    <img src="{{ latest_article.image.url }}" alt="{{ latest_article.title }}" width="400" height="200">
+</article>
+<a href="{% url 'reviews' %}"><li>Reviews</li></a>
+<a href="{% url 'about' %}"><li>About</li></a>
+<a href="{% url 'articles' %}"><li>Articles</li></a>
+<a href="{% url 'employees' %}"><li>Employees</li></a>
+<a href="{% url 'faq' %}"><li>FAQ</li></a>
+<a href="{% url 'promocodes' %}"><li>Promocodes</li></a>
+<a href="{% url 'vacancies' %}"><li>Vacancies</li></a>
+{% endblock %}

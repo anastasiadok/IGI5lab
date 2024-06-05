@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>List of employees</h2>
+
+   {% for employee in employees %}
+
+<div>
+    <h3>{{ employee.first_name}} {{employee.last_name}}</h3>
+    <p>Email: {{ employee.user }}</p>
+    <p>Date of birth: {{ employee.date_of_birth }}</p>
+</div>
+
+   {% endfor %}
+
+{% endblock %}

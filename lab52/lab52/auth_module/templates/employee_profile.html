@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Employee Profile</h1>
+<form action="{% url 'home' %}" method="get">
+    {% csrf_token %}
+    <button type="submit">Home</button>
+    {% if user.is_authenticated %}
+    <p>Name: {{ user.employee.first_name }}</p>
+    <p>Surname: {{ user.employee.last_name }}</p>
+    <p>Date of Birth: {{ user.employee.date_of_birth }}</p>
+    <a href="{% url 'auth_module:edit_profile' %}">Edit</a>
+    {% else %}
+    <p>You are not logged in.</p>
+    {% endif %}
+    {% endblock %}
